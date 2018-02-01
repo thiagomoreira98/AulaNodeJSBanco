@@ -1,5 +1,3 @@
-
-
 CREATE OR REPLACE FUNCTION public.inserirUsuario(
     pNome VARCHAR(50),
     pCPF VARCHAR(15),
@@ -36,7 +34,6 @@ $$
 LANGUAGE PLPGSQL;
 
 ----------------------------------------------------------------------------------------------------------------
-
 CREATE OR REPLACE FUNCTION public.selecionarUsuario(
     pNome VARCHAR(50),
     pPagina SMALLINT,
@@ -94,8 +91,6 @@ $$
 LANGUAGE PLPGSQL;
 
 -----------------------------------------------------------------------------------------------------------
-
-
 CREATE OR REPLACE FUNCTION public.buscarUsuario(
     pId INTEGER
 )
@@ -137,8 +132,6 @@ $$
 LANGUAGE PLPGSQL;
 
 -----------------------------------------------------------------------------------------------------------
-
-
 CREATE OR REPLACE FUNCTION public.alterarUsuario(
     pId INTEGER,
     pNome VARCHAR(50),
@@ -172,8 +165,6 @@ $$
 LANGUAGE PLPGSQL;
 
 ----------------------------------------------------------------------------------------------------------
-
-
 CREATE OR REPLACE FUNCTION public.deletarUsuario(
     pId INTEGER
 )

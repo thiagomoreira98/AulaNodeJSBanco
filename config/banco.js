@@ -1,16 +1,22 @@
+const pg = require('pg');
+
 module.exports = function () {
-    const pg = require('pg');
-    const db = new pg.Client({
+
+    const config = {
         user: process.env.POSTGRES_USER || 'postgres',
         host: process.env.POSTGRES_HOST ||'localhost',
-        // database: process.env.POSTGRES_DATABASE || 'AulaNode',
-        database: process.env.POSTGRES_DATABASE || 'postgres',
-        // password: 'pg123',
-        password: process.env.POSTGRES_PASSWORD || 'pg1234',
+        database: process.env.POSTGRES_DATABASE || 'cursosmn',
+        password: process.env.POSTGRES_PASSWORD || '1234',
         port: process.env.POSTGRES_PORT || 5432
-    });
+    };
 
-    db.connect();
+    const db = new pg.Client(config);
+    
+    db.connect().then(function () {
+        console.log('connected on database:', config.database);
+    }).catch(function (err) {
+        console.log(err);
+    })
 
     return db;
 }
