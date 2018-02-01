@@ -1,7 +1,9 @@
-let app = require('express')();
-const bodyParser = require('body-parser');
-const port = process.env.PORT || 3000;
+const app = require('express')(),
+    bodyParser = require('body-parser'),
+    cors = require('cors'),
+    port = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 

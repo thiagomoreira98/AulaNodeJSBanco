@@ -6,7 +6,7 @@ module.exports = function () {
         // database: process.env.POSTGRES_DATABASE || 'AulaNode',
         database: process.env.POSTGRES_DATABASE || 'postgres',
         // password: 'pg123',
-        password: process.env.POSTGRES_PASSWORD || '1234',
+        password: process.env.POSTGRES_PASSWORD || 'pg1234',
         port: process.env.POSTGRES_PORT || 5432
     });
 

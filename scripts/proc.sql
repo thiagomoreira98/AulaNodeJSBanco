@@ -1,4 +1,5 @@
 
+
 CREATE OR REPLACE FUNCTION public.inserirUsuario(
     pNome VARCHAR(50),
     pCPF VARCHAR(15),
@@ -29,7 +30,7 @@ CREATE OR REPLACE FUNCTION public.inserirUsuario(
             pNome,
             pCPF,
             pEmail
-        )
+        );
     END;
 $$
 LANGUAGE PLPGSQL;
@@ -65,16 +66,17 @@ CREATE OR REPLACE FUNCTION public.selecionarUsuario(
 
     vRegistros := json_agg(o) FROM (
         SELECT 
+            u.id,
             u.nome,
             u.cpf,
             u.email 
         FROM public.usuario u 
         WHERE
-            CASE (pNome IS NOT NULL)
+            CASE  WHEN (pNome IS NOT NULL) THEN
                 (u.nome ILIKE '%' || pnome || '%')
             ELSE
                 TRUE
-            END;
+            END
     )o;
 
     vTotalRegistros := (
@@ -109,6 +111,7 @@ CREATE OR REPLACE FUNCTION public.buscarUsuario(
 	*/
 
     RETURNS TABLE (
+        "id" INTEGER,
         "nome" VARCHAR(50), 
         "cpf" VARCHAR(15),
         "email" VARCHAR(150)
@@ -119,6 +122,7 @@ CREATE OR REPLACE FUNCTION public.buscarUsuario(
     RETURN QUERY
 
         SELECT 
+            u.id,
             u.nome,
             u.cpf,
             u.email
